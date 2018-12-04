@@ -31,13 +31,14 @@ generate_vec_with_rand_elements := proc(Size, LowerBound,
   # In order for this to work properly, LowerBound and
   # UpperBound mustn't be of a floating point type.
   IntervalWidth := eval(UpperBound - LowerBound);
-  
-  # Generate a random number in [0, 1].
-  GenerateNoise := rand() / 10^12;
-  
-  GenerateElement :=
-      x -> evalf(rand() mod IntervalWidth) + LowerBound
-           + GenerateNoise();
+
+  GenerateElement := x ->
+      # Generate a random integer in
+      # [LowerBound, UpperBound].
+      eval(rand() mod IntervalWidth) + LowerBound
+           
+      # Generate a random number in [0, 1].
+      + evalf(rand() / 10^12);
 
   return vector(Size, GenerateElement);
 end;
@@ -46,7 +47,7 @@ end;
 # Executed code.
 ################################
 
-N := 10;
+N := 1000;
 PlotSize := 10;
 
 F := sin(X) / X^2;
