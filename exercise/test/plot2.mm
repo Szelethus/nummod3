@@ -1,7 +1,20 @@
+###############################
+# Includes.
+###############################
+
 with(linalg):;
 with(plots):;
 
+###############################
+# Global option setup.
+###############################
+
+interface(warnlevel=0);
 plotsetup(maplet);
+
+###############################
+# Function definitions.
+###############################
 
 linfit2:=proc(x,y);
  N:=vectdim(x);
@@ -17,6 +30,10 @@ linfit2:=proc(x,y);
  p3:=textplot([0,0.5,evalf((-n[1]/n[2]))*x+evalf(-c/n[2])],align={"above","right"});
  plots[display]({p1,p2,p3});
 end;
+
+################################
+# Executed code.
+################################
 
 N := 100;
 a:=3; b:=2;
