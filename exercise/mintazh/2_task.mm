@@ -1,3 +1,8 @@
+# Állítson elő tetszőleges 'n' mellett egy A 2 Rn×n méretű
+# mátrixot, melynek minden off-diagonális eleme 1, a
+# diagonális elemei pedig 0-k! Allítsa elő az 
+# 'A^4 − 13A^2 − 12A' mátrixot!
+
 ###############################
 # Includes.
 ###############################
@@ -18,13 +23,7 @@ plotsetup(maplet);
 
 pow := proc(Mtx, Exponent);
   # Force copy by using matrix().
-  Result := matrix(Mtx);
-
-  for J from 1 by 1 to Exponent - 1 do
-    Result := multiply(Result, Mtx);
-  end do;
-  
-  return matrix(Result);
+  return multiply(seq(Mtx, J = 1..Exponent));
 end;
 
 # How the fuck is it possible that we need to

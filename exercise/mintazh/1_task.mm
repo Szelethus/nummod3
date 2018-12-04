@@ -1,3 +1,11 @@
+# Írjon két olyan eljárást, melyek paraméterei 'n' és 'k',
+# egészek, kimenetük pedig az 'n' első természetes szám
+# 'k'-adik hatványainak összege. Az első eljárásban
+# használjon a feladat megoldásához ciklust, a második
+# eljárásban viszont csak egyetlen Maple parancsot
+# használjon!
+
+
 ###############################
 # Includes.
 ###############################
