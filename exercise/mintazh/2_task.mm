@@ -4,7 +4,6 @@
 
 with(linalg):;
 with(plots):;
-with(MTM):;
 
 ###############################
 # Global option setup.
