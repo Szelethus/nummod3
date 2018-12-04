@@ -16,16 +16,6 @@ plotsetup(maplet);
 # Function definitions.
 ###############################
 
-generate_matrix_diagonal_zeros_rest_ones := proc(Size);
-  A := matrix(Size, Size, 1);
-
-  for J from 1 by 1 to Size do
-    A[J, J] := 0;
-  end do;
-  
-  return matrix(A);
-end;
-
 pow := proc(Mtx, Exponent);
   # Force copy by using matrix().
   Result := matrix(Mtx);
@@ -54,11 +44,16 @@ subtract := proc(Lhs, Rhs);
   return matrix(Result);
 end;
 
+generate_matrix_diagonal_zeros_rest_ones := proc(Size);
+  return subtract(matrix(Size, Size, 1),
+                  diag(seq(1, J = 1..Size)));
+end;
+
 ###############################
 # Executed code.
 ###############################
 
-Size := 3;
+Size := 10;
 
 A := generate_matrix_diagonal_zeros_rest_ones(Size);
 
