@@ -22,30 +22,11 @@ plotsetup(maplet);
 ###############################
 
 pow := proc(Mtx, Exponent);
-  # Force copy by using matrix().
   return multiply(seq(Mtx, J = 1..Exponent));
 end;
 
-# How the fuck is it possible that we need to
-# define this function? Is this surely the only
-# way?
-subtract := proc(Lhs, Rhs);
-  # Force copy by using matrix().
-  Result := matrix(Lhs);
-  
-  for RowI from 1 by 1 to rowdim(Lhs) do
-    for ColI from 1 by 1 to coldim(Lhs) do
-      Result[RowI, ColI] :=
-          Result[RowI, ColI] - Rhs[RowI, ColI];
-    end do;
-  end do;
-  
-  return matrix(Result);
-end;
-
 generate_matrix_diagonal_zeros_rest_ones := proc(Size);
-  return subtract(matrix(Size, Size, 1),
-                  diag(seq(1, J = 1..Size)));
+  return matrix(Size, Size, 1) - diag(seq(1, J = 1..Size));
 end;
 
 ###############################
@@ -54,12 +35,10 @@ end;
 
 Size := 10;
 
-A := generate_matrix_diagonal_zeros_rest_ones(Size);
+A := generate_matrix_diagonal_zeros_rest_ones(Size):;
 
-subtract(
-  subtract(
-    pow(A, 4),
-    multiply(matrix(Size, Size, 13), pow(A, 2))
-  ),
-  A
+evalm(A);
+
+evalm(
+  pow(A, 4) - multiply(matrix(Size, Size, 13), pow(A, 2)) - A
 );
