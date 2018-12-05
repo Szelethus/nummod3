@@ -29,3 +29,17 @@ plotsetup(maplet);
 ################################################################
 # Executed code.
 ################################################################
+
+# BV actually means "boundary value".
+
+FirstDE := diff(x(t), t) = 2*x(t) + sin(y(t));
+SecondDE := diff(y(t), t) = cos(x(t)) - 3*y(t);
+
+DEs := { FirstDE, SecondDE };
+BVs := { x(0) = 0, y(0) = 2 };
+
+# Note that if you don't add type = numeric, this beast will eat
+# your RAM. And then go for seconds.
+Result := dsolve(DEs union BVs, { x(t), y(t) }, type = numeric);
+
+odeplot(Result, [[t, x(t)], [t, y(t)]], 0 .. 2*Pi);
