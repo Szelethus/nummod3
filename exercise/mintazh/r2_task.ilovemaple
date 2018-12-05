@@ -1,0 +1,18 @@
+with(linalg):;
+with(plots):;
+plotsetup(maplet);
+interface(warnlevel=0);
+ 
+is_same := proc(i,j);
+	if i = j then
+		return 1;
+	else
+		return 0;
+	end if
+end;
+ 
+generate_matrix := proc(n);
+	return(matrix(n,n,(i,j)->is_same(i,j)));
+end;
+
+A := generate_matrix(5);

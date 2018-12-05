@@ -1,0 +1,23 @@
+with(linalg):;
+with(plots):;
+plotsetup(maplet);
+interface(warnlevel=0);
+
+N := 10;
+
+f(x) := sin(x)/x^2;
+g(x) := sin(x^2);
+
+plotF := plot(f(x), x = 1..N, color = 'red'):;
+plotG := plot(g(x), x = 1..N, color = 'blue'):;
+
+rand_x := vector(N,evalf(rand(1..10)));
+rand_y := vector(N,evalf(rand(-3..3)));
+
+plotDots := plot([seq([rand_x[i],rand_y[i]], i = 1..N)],
+	color = 'green',
+	style = 'point',
+	symbol = 'circle'
+):;
+
+display(plotF,plotG, plotDots, scaling = constrained);
