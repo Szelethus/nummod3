@@ -1,0 +1,18 @@
+with(linalg):;
+with(plots):;
+plotsetup(maplet);
+interface(warnlevel=0);
+
+get_magic_element := proc(A,v,k);
+	R := QRdecomp(evalm(A^k),Q='Q');
+	return evalm(norm(R, 'frobenius') * Q &* v);
+end;
+
+get_magic_list := proc(A, v);
+	return seq(get_magic_element(A,v,k), k = 1..vectdim(v));
+end;
+
+A := matrix(2,2,[[1,2],[3,4]]);
+v := vector(2,[2,3]);
+
+evalf(get_magic_list(A,v));
