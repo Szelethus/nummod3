@@ -22,7 +22,13 @@ plotsetup(maplet);
 ################################################################
 
 pow := proc(Mtx, Exponent);
-  return multiply(seq(Mtx, J = 1..Exponent));
+  if Exponent = 0 then
+    return 1;
+  elif Exponent = 1 then
+    return Mtx;
+  end if;
+  
+  return multiply(seq(Mtx, J=1..Exponent));
 end;
 
 generate_matrix_diagonal_zeros_rest_ones := proc(Size);
@@ -40,5 +46,5 @@ A := generate_matrix_diagonal_zeros_rest_ones(Size):;
 evalm(A);
 
 evalm(
-  pow(A, 4) - multiply(matrix(Size, Size, 13), pow(A, 2)) - A
+  pow(A, 4) - evalm(13 * pow(A, 2)) - A
 );
