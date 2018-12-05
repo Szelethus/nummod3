@@ -46,5 +46,5 @@ A := generate_matrix_diagonal_zeros_rest_ones(Size):;
 evalm(A);
 
 evalm(
-  pow(A, 4) - evalm(13 * pow(A, 2)) - A
+  pow(A, 4) - 13 * pow(A, 2) - A
 );
