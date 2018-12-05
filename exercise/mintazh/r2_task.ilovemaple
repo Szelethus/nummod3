@@ -15,4 +15,7 @@ generate_matrix := proc(n);
 	return(matrix(n,n,(i,j)->is_same(i,j)));
 end;
 
+
 A := generate_matrix(5);
+
+evalm(A^4 - 13*A^3 - 12*A);
