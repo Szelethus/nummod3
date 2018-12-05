@@ -50,8 +50,11 @@ PlotF := plot(F, X = 1..PlotSize, color = 'red'):;
 G := sin(X^2);
 PlotG := plot(G, X = 1..PlotSize, color = 'blue'):;
 
-VecX := generate_vec_with_rand_elements(N, 1, 10);
-VecY := generate_vec_with_rand_elements(N, -3, 3);
+# For some reason, my laptop struggles a lot with printing
+# to the terminal, for large vectors I just turn it off
+# with :.
+VecX := generate_vec_with_rand_elements(N, 1, 10):;
+VecY := generate_vec_with_rand_elements(N, -3, 3):;
 
 PlotDots := plot([seq([VecX[J], VecY[J]], J = 1..N)],
                  color = 'green',
