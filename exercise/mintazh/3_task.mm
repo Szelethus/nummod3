@@ -28,17 +28,11 @@ plotsetup(maplet);
 
 generate_vec_with_rand_elements := proc(Size, LowerBound,
                                         UpperBound);
-  # In order for this to work properly, LowerBound and
-  # UpperBound mustn't be of a floating point type.
-  IntervalWidth := eval(UpperBound - LowerBound);
+  FloatingLowerBound := convert(LowerBound, float);
+  FloatingUpperBound := convert(UpperBound, float);
 
-  GenerateElement := x ->
-      # Generate a random integer in
-      # [LowerBound, UpperBound].
-      eval(rand() mod IntervalWidth) + LowerBound
-           
-      # Generate a random number in [0, 1].
-      + evalf(rand() / 10^12);
+  GenerateElement := x -> 
+      evalf(rand(FloatingLowerBound..FloatingUpperBound)());
 
   return vector(Size, GenerateElement);
 end;
