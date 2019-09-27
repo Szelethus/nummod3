@@ -17,9 +17,9 @@ Digits := 10;
 f := x -> sin(x^2);
 f2 := x -> 1 / x;
 
-#plot(f2, -1..1);
-#plot({f, x->exp(-x)}, 0..10);
-#plot(f, 0..1);
+plot(f2, -1..1);
+plot({f, x->exp(-x)}, 0..10);
+plot(f, 0..1);
 
 sum(i^3, i=1..10);
 sm1 := sum(i, i=1..n);
