@@ -37,7 +37,7 @@ dsolve({de, ke}, y(t));
 mo := dsolve({de2, ke}, y(t), type=numeric);
 
 #ehhez be kell tölteni a plot csomagot
-odeplot(mo, [t, y(t)], 0..5);
+#odeplot(mo, [t, y(t)], 0..5);
 
 dey := diff(y(t), t) = 2*y(t) - z(t);
 dez := diff(z(t), t) =  -y(t) + z(t);
@@ -66,10 +66,10 @@ mo := dsolve({dey, key}, y(t), type=numeric);
 
 #futó és a kutykuty
 
-X := t->t;
-Y := t->1/5 * t;
+X := t->cos(t);
+Y := t->sin(t);
 
-w := 1;
+w := 0.5;
 x0 := 6; y0 := 7;
 
 norma := sqrt((X(t) - x(t))^2 + (Y(t) - y(t))^2);
@@ -78,4 +78,4 @@ de := {diff(x(t), t) = (w/norma)*(X(t) - x(t)), diff(y(t), t) = (w/norma)*(Y(t) 
 
 mo := dsolve(de, {x(t), y(t)}, type=numeric);
 
-odeplot(mo, [[x(t), y(t)], [X(t), Y(t)]], 0..10);
+odeplot(mo, [[x(t), y(t)], [X(t), Y(t)]], 0..40);
