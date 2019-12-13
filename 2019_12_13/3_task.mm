@@ -24,15 +24,3 @@ end;
 ################################################################
 # Usage.
 ################################################################
-Grain := 10;
-
-B := vector(Grain, 0);
-evalm(B);
-for J from 1 by 1 to Grain do;
-	B[J] := x -> binom(Grain, J) * x^J * (1 - x)^(Grain - J);
-end do;
-evalm(B);
-B := x -> vector([seq(binom(Grain, J) * x^k(1-x[J])^(n-k), J=
-
-
-x := vector([seq(J / Grain, J=1..Grain)]);
